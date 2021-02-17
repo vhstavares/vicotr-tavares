@@ -499,8 +499,8 @@
           <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.4s">          
             <div class="col-md-6 col-lg-6 col-sm-12">
               <div class="contact-block">
-                <h2>formulário para contato</h2>
-                <form id="contactForm">
+                <h2>Formulário para contato</h2>
+                <form>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -510,7 +510,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input type="text" placeholder="Email" id="email" class="form-control" name="email" required data-error="Por favor insira seu email">
+                        <input type="email" placeholder="Email" id="email" class="form-control" name="email" required data-error="Por favor insira seu email">
                         <div class="help-block with-errors"></div>
                       </div> 
                     </div>
@@ -531,8 +531,8 @@
                         <div class="clearfix"></div> 
                       </div>
                     </div>
-                  </div>            
-                </form>
+                  </div>
+                </form>              
               </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12">
@@ -612,6 +612,45 @@
     <script src="assets/js/form-validator.min.js"></script>
     <script src="assets/js/contact-form-script.min.js"></script>
     <script src="assets/js/map.js"></script>
-      
+    <script type="text/javascript">
+  
+      $("#submit" ).click(function( event ) {
+        //alert("form");
+        
+        /*$.post("http://127.0.0.1:5000/sendInfo", {
+            assunto:document.querySelector("#msg_subject").value,
+            email: document.querySelector("#email").value,
+            mensagem: document.querySelector("#message").value,
+            name: document.querySelector("#name").value
+        });*/
+
+        //document.location.reload(true);
+
+        
+        $.ajax({
+              url : "https://send-email-vh.herokuapp.com/sendInfo",
+              type : 'post',
+              data : {
+                      assunto:document.querySelector("#msg_subject").value,
+                      email: document.querySelector("#email").value,
+                      mensagem: document.querySelector("#message").value,
+                      name: document.querySelector("#name").value
+              },
+             
+          })
+          .done(function(msg){
+              //console.log("Enviado com sucesso");
+              alert("Enviado com sucesso");
+              console.log(msg);
+          })
+          .fail(function(jqXHR, textStatus, msg){
+              console.log(msg);
+              alert("Erro ao enviar formulario");
+          });
+
+      });
+
+
+    </script>
   </body>
 </html>
