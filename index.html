@@ -500,7 +500,7 @@
             <div class="col-md-6 col-lg-6 col-sm-12">
               <div class="contact-block">
                 <h2>Formulário para contato</h2>
-                <form>
+                <form id="formSend">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -614,39 +614,37 @@
     <script src="assets/js/map.js"></script>
     <script type="text/javascript">
   
-      $("#submit" ).click(function( event ) {
-        //alert("form");
+      $("#formSend" ).submit(function( event ) {
         
-        /*$.post("http://127.0.0.1:5000/sendInfo", {
-            assunto:document.querySelector("#msg_subject").value,
-            email: document.querySelector("#email").value,
-            mensagem: document.querySelector("#message").value,
-            name: document.querySelector("#name").value
-        });*/
-
-        //document.location.reload(true);
-
-        
-        $.ajax({
+          event.preventDefault();
+       
+          $.ajax({
               url : "https://send-email-vh.herokuapp.com/sendInfo",
               type : 'post',
               data : {
-                      assunto:document.querySelector("#msg_subject").value,
-                      email: document.querySelector("#email").value,
-                      mensagem: document.querySelector("#message").value,
-                      name: document.querySelector("#name").value
+                      "assunto":document.querySelector("#msg_subject").value,
+                      "email": document.querySelector("#email").value,
+                      "mensagem": document.querySelector("#message").value,
+                      "name": document.querySelector("#name").value
               },
+              beforeSend : function(){
+                    console.log("Enviando");
+                    $("#msgSubmit").html("ENVIANDO...");
+              }
              
           })
           .done(function(msg){
-              //console.log("Enviado com sucesso");
-              alert("Enviado com sucesso");
               console.log(msg);
+              $("#msgSubmit").html("");
+              alert("Enviado com sucesso, muito obrigado pelo seu contato.");
+              window.location="/index.html";
           })
           .fail(function(jqXHR, textStatus, msg){
               console.log(msg);
               alert("Erro ao enviar formulario");
           });
+        
+        return false;
 
       });
 
