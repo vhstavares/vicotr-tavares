@@ -141,15 +141,8 @@
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
               <h3>Olá</h3>
-              <p style="text-align: justify" >Sou Estudante da Facens no curso de Engenharia da Computação,
-                já atuei na área de Marketing Digital, tive uma participação no Programa
-                Coworking Universidades Realizado Pelo Parque Tecnológico de
-                Sorocaba no qual tive treinamentos sobre: Oratória, Trabalho em
-                Equipe, Liderança, Auto Conhecimento, Gestão de Projetos.
-                Atualmente sou estagiário pela própria Facens e presto serviços a
-                multinacional Huawei desde 2019, e lá executo serviços como automatização de tarefas por meio de RPAs,
-                tratativa de dados, geração de reports e criação de ferramentas para desktop.
-                E Atualmente também estou desenvolvendo um projeto de uma lista telefônica digital para uma agência de publicidade, projeto do qual será 100% estruturado em cloud computing com uso do Amazon AWS.
+              <p style="text-align: justify" >Sou Estudante da Facens no curso de Engenharia da Computação pela Facens. Atualmente trabalho na própria Facens onde presto serviços para a multinacional Huawei, e lá sou desenvolvedor Python onde desenvolvo diversas ferramentas para automação e análise de dados.
+  Tive também uma participação no Programa Coworking Universidades Realizado Pelo Parque Tecnológico de Sorocaba no qual tive treinamentos sobre: Oratória, Trabalho em Equipe, Liderança, Auto Conhecimento, Gestão de Projetos.
               </p>
               <div class="about-profile">
                 <ul class="admin-profile">
@@ -497,7 +490,7 @@
       <div class="contact-form">
         <div class="container">
           <div class="row contact-form-area wow fadeInUp" data-wow-delay="0.4s">          
-            <div class="col-md-6 col-lg-6 col-sm-12">
+            <!--div class="col-md-6 col-lg-6 col-sm-12">
               <div class="contact-block">
                 <h2>Formulário para contato</h2>
                 <form id="formSend">
@@ -534,8 +527,8 @@
                   </div>
                 </form>              
               </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-sm-12">
+            </div-->
+            <div class="col-md-12 col-lg-12 col-sm-12">
               <div class="footer-right-area wow fadeIn">
                 <h2>Contato - Endereço</h2>
                 <div class="footer-right-contact">
@@ -612,43 +605,8 @@
     <script src="assets/js/form-validator.min.js"></script>
     <script src="assets/js/contact-form-script.min.js"></script>
     <script src="assets/js/map.js"></script>
-    <script type="text/javascript">
-  
-      $("#formSend" ).submit(function( event ) {
-        
-          event.preventDefault();
-       
-          $.ajax({
-              url : "https://send-email-vh.herokuapp.com/sendInfo",
-              type : 'post',
-              data : {
-                      "assunto":document.querySelector("#msg_subject").value,
-                      "email": document.querySelector("#email").value,
-                      "mensagem": document.querySelector("#message").value,
-                      "name": document.querySelector("#name").value
-              },
-              beforeSend : function(){
-                    console.log("Enviando");
-                    $("#msgSubmit").html("ENVIANDO...");
-              }
-             
-          })
-          .done(function(msg){
-              console.log(msg);
-              $("#msgSubmit").html("");
-              alert("Enviado com sucesso, muito obrigado pelo seu contato.");
-              window.location="https://vhstavares.github.io/victor-tavares/";
-          })
-          .fail(function(jqXHR, textStatus, msg){
-              console.log(msg);
-              alert("Erro ao enviar formulario");
-          });
-        
-        return false;
-
-      });
-
-
-    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    
   </body>
 </html>
